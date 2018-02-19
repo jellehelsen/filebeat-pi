@@ -19,11 +19,13 @@ RUN [ "cross-build-end" ]
 
 FROM resin/raspberry-pi2-alpine
 
+RUN [ "cross-build-start" ]
 RUN mkdir /usr/share/filebeat
 
 COPY --from=docker.elastic.co/beats/filebeat:6.2.1 /usr/share/filebeat /usr/share/filebeat
 
 COPY --from=builder /go/bin/filebeat /usr/share/filebeat
+RUN [ "cross-build-end" ]
 
 WORKDIR /usr/share/filebeat
 
