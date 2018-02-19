@@ -1,4 +1,4 @@
-from golang:latest
+from resin/raspberry-pi2-golang
 
 RUN set -ex; \
       for pkg in elastic/beats/filebeat; \
