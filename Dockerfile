@@ -3,6 +3,7 @@ from resin/raspberry-pi2-golang as builder
 env CGO_ENABLED=0
 env GOOS=linux
 
+RUN [ "cross-build-start" ]
 RUN set -ex; \
       for pkg in elastic/beats/filebeat; \
       do \
@@ -13,6 +14,8 @@ RUN set -ex; \
         && rm -rf /go/src/github.com/$pkg ;\
       done; \
       rm -rf /go/src/*
+
+RUN [ "cross-build-end" ]
 
 FROM resin/raspberry-pi2-alpine
 
